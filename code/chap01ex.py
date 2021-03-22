@@ -19,8 +19,17 @@ def main(script):
 
     script: string script name
     """
-    print('%s: All tests passed.' % script)
+    print("%s: All tests passed." % script)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main(*sys.argv)
+
+preg = nsfg.ReadFemPreg()
+nsfg.CleanFemPreg(preg)
+preg_map = nsfg.MakePregMap(preg)
+
+
+pregnum = preg["pregnum"]
+print(pregnum.value_counts().sort_index())
+print(preg_map)
